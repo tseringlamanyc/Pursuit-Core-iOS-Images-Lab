@@ -32,10 +32,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jA5-VU-qsd">
                                 <rect key="frame" x="307" y="608" width="87" height="30"/>
                                 <state key="normal" title="Most Recent"/>
+                                <connections>
+                                    <action selector="mostRecentPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TG3-Ri-tOZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kC-GA-2JF">
                                 <rect key="frame" x="20" y="608" width="57" height="30"/>
                                 <state key="normal" title="Random"/>
+                                <connections>
+                                    <action selector="randomButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vCs-Fp-ZXB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

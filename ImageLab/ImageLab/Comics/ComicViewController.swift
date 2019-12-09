@@ -20,6 +20,7 @@ class ComicViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userText.delegate = self
         configureStepper()
         loadComics(issue: Int(comicStepper.value))
     }
@@ -65,6 +66,20 @@ class ComicViewController: UIViewController {
         loadComics(issue: Int(sender.value))
     }
     
+    
+    @IBAction func randomButton(_ sender: UIButton) {
+        var randonNum = Double.random(in: comicStepper.minimumValue...comicStepper.maximumValue)
+        loadComics(issue: Int(randonNum))
+    }
+    
+    
+    @IBAction func mostRecentPressed(_ sender: Any) {
+        loadComics(issue: Int(comicStepper.maximumValue))
+    }
+    
+}
+
+extension ComicViewController: UITextFieldDelegate {
     
 }
 

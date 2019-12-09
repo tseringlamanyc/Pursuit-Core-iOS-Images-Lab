@@ -16,15 +16,19 @@ class ComicViewController: UIViewController {
     
     var comics = [Comics]()
     
+    var comicInts: Double = 614
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureStepper()
+        loadComics(issue: Int(comicStepper.value))
     }
     
     func configureStepper() {
-        comicStepper.maximumValue = 624
-        comicStepper.minimumValue = 614
-        comicStepper.value = 614
+        comicStepper.maximumValue = Double(comics.last?.num ?? 624)
+        comicStepper.minimumValue = Double(comics.first?.num ?? 614)
+        comicStepper.value = Double(comics.first?.num ?? 614)
+        comicStepper.stepValue = 1.0
     }
     
     func loadComics(issue: Int) {
@@ -33,10 +37,13 @@ class ComicViewController: UIViewController {
             case .failure(let appError):
                 print("\(appError)")
             case .success(let getComics):
-                self.comics = getComics
+                DispatchQueue.main.async {
+                    self.userText.text = "Issue number: \(getComics.num.description)"
+                    self.loadImage(urlString: getComics.img)
+                    self.comicStepper.value = Double(getComics.num)
+                }
             }
         }
-       
     }
     
     func loadImage(urlString: String) {
@@ -52,7 +59,12 @@ class ComicViewController: UIViewController {
             }
         }
     }
-
-
+    
+    
+    @IBAction func stepperClicked(_ sender: UIStepper) {
+        loadComics(issue: Int(sender.value))
+    }
+    
+    
 }
 

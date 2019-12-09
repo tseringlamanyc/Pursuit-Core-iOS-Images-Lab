@@ -20,6 +20,9 @@
                             </imageView>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="cwO-dH-puJ">
                                 <rect key="frame" x="160" y="475" width="94" height="32"/>
+                                <connections>
+                                    <action selector="stepperClicked:" destination="BYZ-38-t0r" eventType="valueChanged" id="GkR-yr-vPB"/>
+                                </connections>
                             </stepper>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type in a number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XFT-0X-3aZ">
                                 <rect key="frame" x="20" y="534" width="374" height="34"/>

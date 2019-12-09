@@ -58,6 +58,7 @@
                     <tabBarItem key="tabBarItem" title="Comics" image="book" catalog="system" id="0Yw-94-xAa"/>
                     <connections>
                         <outlet property="comicImage" destination="KLN-7l-KeM" id="8ww-sV-rMM"/>
+                        <outlet property="comicStepper" destination="cwO-dH-puJ" id="toO-z7-PHD"/>
                         <outlet property="userText" destination="XFT-0X-3aZ" id="uJT-Rd-38k"/>
                     </connections>
                 </viewController>

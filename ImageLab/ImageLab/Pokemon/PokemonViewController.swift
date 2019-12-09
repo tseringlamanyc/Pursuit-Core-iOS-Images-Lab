@@ -14,6 +14,8 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var searchPokemon: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    var currentSearch = ""
+    
     var pokemons = [Pokemon]() {
         didSet {
             DispatchQueue.main.async {
@@ -28,6 +30,7 @@ class PokemonViewController: UIViewController {
         loadData()
         tableView.dataSource = self
         tableView.delegate = self
+        searchPokemon.delegate = self
     }
     
     func loadData() {
@@ -42,6 +45,11 @@ class PokemonViewController: UIViewController {
             }
         }
     }
+    
+    func searchCards() {
+        pokemons = pokemons.filter {$0.name.lowercased().contains(currentSearch.lowercased())}
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailVC = segue.destination as? PokemonDetailVC, let indexpath = tableView.indexPathForSelectedRow else {
@@ -69,6 +77,19 @@ extension PokemonViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 400
     }
+}
+
+extension PokemonViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
     
-    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            loadData()
+            return
+        }
+        currentSearch = searchText
+        searchCards()
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  Comics.swift
+//  ComicsAPIClient.swift
 //  ImageLab
 //
 //  Created by Tsering Lama on 12/9/19.

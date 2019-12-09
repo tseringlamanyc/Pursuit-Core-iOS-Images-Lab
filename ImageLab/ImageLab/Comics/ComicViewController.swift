@@ -9,10 +9,12 @@
 import UIKit
 
 class ComicViewController: UIViewController {
-
+    
+    @IBOutlet weak var comicImage: UIImageView!
+    @IBOutlet weak var userText: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
 

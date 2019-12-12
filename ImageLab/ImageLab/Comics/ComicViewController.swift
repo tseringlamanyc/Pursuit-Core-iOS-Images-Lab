@@ -16,8 +16,6 @@ class ComicViewController: UIViewController {
     
     var comics = [Comics]()
     
-    var comicInts: Double = 614
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         userText.delegate = self
@@ -26,7 +24,7 @@ class ComicViewController: UIViewController {
     }
     
     func configureStepper() {
-        comicStepper.maximumValue = Double(comics.last?.num ?? 624)
+        comicStepper.maximumValue = Double(comics.last?.num ?? 634)
         comicStepper.minimumValue = Double(comics.first?.num ?? 614)
         comicStepper.value = Double(comics.first?.num ?? 614)
         comicStepper.stepValue = 1.0

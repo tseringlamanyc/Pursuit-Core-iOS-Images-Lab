@@ -24,7 +24,6 @@ class PokemonViewController: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
@@ -47,7 +46,8 @@ class PokemonViewController: UIViewController {
     }
     
     func searchCards() {
-        pokemons = pokemons.filter {$0.name.lowercased().contains(currentSearch.lowercased())}
+        print(currentSearch)
+        pokemons = pokemons.filter({(($0.types?.first?.lowercased().contains(currentSearch.lowercased())) ?? false )})
     }
     
     
@@ -57,7 +57,6 @@ class PokemonViewController: UIViewController {
         }
         detailVC.pokemon = pokemons[indexpath.row]
     }
-
 }
 
 extension PokemonViewController: UITableViewDataSource, UITableViewDelegate {
@@ -93,3 +92,5 @@ extension PokemonViewController: UISearchBarDelegate {
         searchCards()
     }
 }
+
+

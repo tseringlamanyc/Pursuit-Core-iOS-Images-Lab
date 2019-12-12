@@ -33,7 +33,7 @@ class ComicViewController: UIViewController {
     }
     
     func loadComics(issue: Int) {
-        let getComics = ComicAPI.getComics(comicInt: issue) { (result) in
+        _ = ComicAPI.getComics(comicInt: issue) { (result) in
             switch result {
             case .failure(let appError):
                 print("\(appError)")
@@ -61,25 +61,24 @@ class ComicViewController: UIViewController {
         }
     }
     
-    
     @IBAction func stepperClicked(_ sender: UIStepper) {
         loadComics(issue: Int(sender.value))
     }
-    
     
     @IBAction func randomButton(_ sender: UIButton) {
         var randonNum = Double.random(in: comicStepper.minimumValue...comicStepper.maximumValue)
         loadComics(issue: Int(randonNum))
     }
     
-    
     @IBAction func mostRecentPressed(_ sender: Any) {
         loadComics(issue: Int(comicStepper.maximumValue))
     }
-    
 }
 
 extension ComicViewController: UITextFieldDelegate {
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+    }
 }
 

@@ -66,7 +66,7 @@ class ComicViewController: UIViewController {
     }
     
     @IBAction func randomButton(_ sender: UIButton) {
-        var randonNum = Double.random(in: comicStepper.minimumValue...comicStepper.maximumValue)
+        let randonNum = Double.random(in: comicStepper.minimumValue...comicStepper.maximumValue)
         loadComics(issue: Int(randonNum))
     }
     
@@ -78,7 +78,14 @@ class ComicViewController: UIViewController {
 extension ComicViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
+        var intt = Int(userText.text!)
+        loadComics(issue:intt!)
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textField.text = ""
+        return true 
     }
 }
 

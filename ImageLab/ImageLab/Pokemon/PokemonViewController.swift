@@ -14,7 +14,7 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var searchPokemon: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
-    var currentSearch = ""
+    var currentSearch = "" 
     
     var pokemons = [Pokemon]() {
         didSet {
